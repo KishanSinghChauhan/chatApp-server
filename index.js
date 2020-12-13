@@ -13,6 +13,13 @@ const io = socketio(server);
 
 app.use(router);
 
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
 
 server.listen(PORT, () => {
     console.log(`server is running on ${PORT}`)
