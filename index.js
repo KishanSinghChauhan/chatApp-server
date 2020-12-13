@@ -4,10 +4,14 @@ const socketio = require('socket.io');
 const http = require('http');
 const PORT = process.env.PORT || 5000;
 
+const router = require('./routes');
+const { route } = require('./routes');
 const app = express();
 
 const server = http.Server(app);
 const io = socketio(server);
+
+app.use(router);
 
 
 server.listen(PORT, () => {
